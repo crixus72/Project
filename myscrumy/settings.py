@@ -79,7 +79,7 @@ DATABASES = {
         'NAME': 'linuxjobber',
         'USER': 'iamovi',
         'PASSWORD': 'queeneth72',
-        'HOST': '%'
+        'HOST': '127.0.0.1'
     }
 }
 
