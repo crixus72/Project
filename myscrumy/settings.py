@@ -77,7 +77,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'linuxjobber',
-        'USER': 'zed',
+        'USER': 'root',
         'PASSWORD': 'queeneth72',
     }
 }
