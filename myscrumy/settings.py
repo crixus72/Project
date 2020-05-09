@@ -75,9 +75,9 @@ WSGI_APPLICATION = 'myscrumy.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'linuxjobber',
-        'USER': 'root',
+        'USER': 'zed',
         'PASSWORD': 'queeneth72',
     }
 }
