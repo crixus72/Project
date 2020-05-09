@@ -79,7 +79,7 @@ DATABASES = {
         'NAME': 'linuxjobber',
         'USER': 'root',
         'PASSWORD': 'queeneth72',
-        'HOST': 'ec2-3-23-115-174.us-east-2.compute.amazonaws.com',
+        'HOST': '',
 
     }
 }
