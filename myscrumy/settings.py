@@ -77,7 +77,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'linuxjobber',
-        'USER': 'zed',
+        'USER': 'iamovi',
         'PASSWORD': 'queeneth72',
     }
 }
