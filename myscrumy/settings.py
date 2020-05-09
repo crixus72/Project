@@ -79,7 +79,8 @@ DATABASES = {
         'NAME': 'linuxjobber',
         'USER': 'root',
         'PASSWORD': 'queeneth72',
-        'PORT': '8080'
+        'HOST' : 'localhost'
+
     }
 }
 
