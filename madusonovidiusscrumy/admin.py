@@ -5,4 +5,4 @@ from .models import *
 admin.site.register(GoalStatus)
 admin.site.register(ScrumyGoals)
 admin.site.register(ScrumyHistory)
-admin.site.register(User)
+
