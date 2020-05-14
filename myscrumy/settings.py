@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['3.23.115.174']
 # Application definition
 
 INSTALLED_APPS = [
-    'madusonovidiusscrumy',
+    'madusonovidiusscrumy.apps.MadusonovidiusscrumyConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

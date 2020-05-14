@@ -1,21 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils import timezone
 
 
 # Create your models here.
 class GoalStatus(models.Model):
-    STATUS_CHOICES=(
+    STATUS_CHOICES = (
         ('pending', 'Pending',),
         ('reviewing', 'Reviewing'),
-        ('approval', 'Approval')
+        ('approval', 'Approval'),
     )
     status_name = models.CharField(max_length=15,
                                    choices=STATUS_CHOICES,
                                    default='pending')
-
-    def __str__(self):
-        return self.status_name
 
 
 class ScrumyGoals(models.Model):
@@ -27,10 +23,7 @@ class ScrumyGoals(models.Model):
     goal_status = models.ForeignKey(GoalStatus, on_delete=models.PROTECT)
     user = models.ForeignKey(User,
                              on_delete=models.PROTECT,
-                             related_name='goal_created',)
-
-    def __str__(self):
-        return self.goal_name
+                             related_name='created_by',)
 
 
 class ScrumyHistory(models.Model):
@@ -38,8 +31,6 @@ class ScrumyHistory(models.Model):
     created_by = models.CharField(max_length=50)
     moved_from = models.CharField(max_length=50)
     moved_to = models.CharField(max_length=50)
-    time_of_action = models.DateTimeField(default=timezone.now)
+    time_of_action = models.DateTimeField(auto_now_add=True)
     goal = models.ForeignKey(ScrumyGoals, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.created_by
