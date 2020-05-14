@@ -5,4 +5,4 @@ from django.http import HttpResponse
 
 # Create your views here.
 def get_grading_parameters(request):
-    return HttpResponse("<h1>This is a Scrum application</h1>")
+    return HttpResponse("This is a Scrum application")
