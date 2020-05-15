@@ -17,10 +17,10 @@ class ScrumyGoals(models.Model):
     created_by = models.CharField(max_length=50)
     moved_by = models.CharField(max_length=50)
     owner = models.CharField(max_length=50)
-    goal_status = models.ForeignKey(GoalStatus, on_delete=models.PROTECT)
+    goal_status = models.ForeignKey(GoalStatus, on_delete=models.CASCADE,)
     user = models.ForeignKey(User,
                              related_name='goal_created',
-                             on_delete=models.PROTECT)
+                             on_delete=models.PROTECT,)
 
     def __str__(self):
         return self.goal_name
