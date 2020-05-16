@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ScrumyHistory, ScrumyGoals, GoalStatus
+from madusonovidiusscrumy.models import GoalStatus, ScrumyGoals, ScrumyHistory
 
 # Register your models here.
 admin.site.register(GoalStatus)
