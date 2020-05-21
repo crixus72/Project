@@ -15,8 +15,13 @@ from madusonovidiusscrumy.models import *
 
 
 def move_goal(request, goal_id):
-    answer = ScrumyGoals.objects.get(id=goal_id)
-    return HttpResponse(answer)
+    message = {'error': 'A record with that goal id does not exist'}
+    try:
+        obj = ScrumyGoals.objects.get(id=goal_id)
+    except Exception as e:
+        return render(request, 'madusonovidiusscrumy/exception.html', message)
+    else:
+        return HttpResponse(obj.goal_name)
 
 
 def add_goal(request):
