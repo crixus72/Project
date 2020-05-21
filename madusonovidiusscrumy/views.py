@@ -1,9 +1,13 @@
-# Django
-from django.http import HttpResponse
-from madusonovidiusscrumy.models import *
-from django.contrib.auth.models import User
+# Standard library
 from random import randint
 
+# Django
+from django.http import HttpResponse
+from django.contrib.auth.models import User
+from django.shortcuts import render
+
+# Local
+from madusonovidiusscrumy.models import *
 
 # def get_grading_parameters(request):
 # response = ScrumyGoals.objects.filter(goal_name__exact='Learn Django')
@@ -32,9 +36,14 @@ def add_goal(request):
     return HttpResponse(addgoal)
 
 def home (request):
-    show_record = ScrumyGoals.objects.filter(goal_name__exact=
-                                             'Keep Learning Django')
-    output = ', '.join([a.goal_name for a in show_record])
-    return HttpResponse(output)
+    objs = ScrumyGoals.objects.all()
+    myuser = objs.user = User.objects.get(goal_created__goal_name=
+                                          'Learn Django')
+    dictionary = {
+        'goal_name': 'Learn Django',
+        'goal_id': '1',
+        'user': User.objects.get(first_name='Louis'),
+    }
+    return render(request, 'madusonovidiusscrumy/home.html', dictionary)
 
 # Create your views here.
