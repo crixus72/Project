@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views
+from websocket import views
 
 urlpatterns = [
     path('test/', views.test, name='test'),
