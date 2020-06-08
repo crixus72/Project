@@ -2,11 +2,11 @@
 from django.urls import path
 
 # Local
-# from websocket import views
+from websocket import views
 
 app_name = 'websocket'
 
-""" urlpatterns = [
+urlpatterns = [
     path('test/', views.test, name='test'),
     path('disconnect/', views.disconnect, name='disconnect'),
-]"""
+]
