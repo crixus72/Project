@@ -1,4 +1,7 @@
+# Django
 from django.urls import path
+
+# Local
 from websocket import views
 
 app_name = 'websocket'
