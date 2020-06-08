@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.forms import ModelForm, CharField, widgets, PasswordInput
 
 
 # Create your models here.
@@ -19,7 +20,7 @@ class ScrumyGoals(models.Model):
     owner = models.CharField(max_length=50)
     goal_status = models.ForeignKey(GoalStatus, on_delete=models.PROTECT,)
     user = models.ForeignKey(User,
-                             related_name='goal_created',
+                             related_name='created_by',
                              on_delete=models.PROTECT,)
 
     def __str__(self):
@@ -36,6 +37,31 @@ class ScrumyHistory(models.Model):
 
     def __str__(self):
         return self.created_by
+
+
+class SignupForm(ModelForm):
+    password = CharField(widget=PasswordInput)
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email', 'username', 'password']
+
+
+class CreateGoalForm(ModelForm):
+    class Meta:
+        model = ScrumyGoals
+        fields = ['goal_name', 'user']
+        permissions = (
+            ("can_create_personal_weekly", "Create Personal Weekly Goal"),
+        )
+
+
+
+class MoveGoalForm(ModelForm):
+    goal_name = CharField(disabled=True)
+    class Meta:
+        model = ScrumyGoals
+        fields = ['goal_name', 'goal_status']
 
 
 

@@ -12,4 +12,6 @@ madusonovidiusscrumy/models.py
 madusonovidiusscrumy/tests.py
 madusonovidiusscrumy/urls.py
 madusonovidiusscrumy/views.py
+madusonovidiusscrumy/migrations/0001_initial.py
+madusonovidiusscrumy/migrations/0002_auto_20200516_1749.py
 madusonovidiusscrumy/migrations/__init__.py

@@ -25,13 +25,13 @@ SECRET_KEY = 'j1z_(m$b==cgaztej9i9v#tlt#7=*(xekxho#67q7csp4j)!3f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['3.23.115.174']
-
+ALLOWED_HOSTS = []
 
 # Application definition
 
 INSTALLED_APPS = [
     'madusonovidiusscrumy.apps.MadusonovidiusscrumyConfig',
+    'websocket.apps.WebsocketConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,7 +55,9 @@ ROOT_URLCONF = 'myscrumy.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,
+                              'madusonovidiusscrumy/templates/'
+                              'madusonovidiusscrumy')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,3 +121,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "madusonovidiusscrumy/../static")]
+
+
+LOGIN_REDIRECT_URL = 'madusonovidiusscrumy:home'
+
+LOGIN_URL = "madusonovidiusscrumy:login"
