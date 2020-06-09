@@ -55,3 +55,5 @@ def send_message(request):
     data = {'messages': [body]}
     for connection in connections:
         _send_to_connection(connection, data)
+        print(connection)
+    return JsonResponse({'message': 'message sent successfully'}, status=200)
