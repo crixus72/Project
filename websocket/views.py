@@ -51,8 +51,9 @@ def send_message(request):
         timestamp=['body']["username"],
         message=['body']["username"],
     )
+    text.save()
     connections = ConnectionModel.objects.all()
-    data = {'messages': [body]}
+    data = {'message': [body]}
     for connection in connections:
         _send_to_connection(connection.connection_id, data)
         print(connection)
