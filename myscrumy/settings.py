@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['18.220.161.163']
 
 INSTALLED_APPS = [
     'madusonovidiusscrumy.apps.MadusonovidiusscrumyConfig',
-    'websocket',
+    'websocket.apps.WebsocketConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
