@@ -25,14 +25,14 @@ def connect(request):
     connection_id.save()
     return JsonResponse({'message': 'Connect Successfully'}, status=200)
 
-
+@csrf_exempt
 def disconnect(request):
     body = __parse__body(request.body)
     connection_id = body['connectionId']
     connection_id.delete()
     return JsonResponse({'message': 'Disconnect Successfully'}, status=200)
 
-
+@csrf_exempt
 def _send_to_connection(connection_id, data):
     gatewayapi = boto3.client('apigatewaymanagementapi',
                               endpoint_url='https://ht8g1d3d53.execute-api.us-east-2.amazonaws.com/teststage',
@@ -43,7 +43,7 @@ def _send_to_connection(connection_id, data):
     return gatewayapi.post_to_connection(ConnectionId=connection_id,
                                          Data=json.dumps(data).encode('utf-8'))
 
-
+@csrf_exempt
 def send_message(request):
     body = __parse__body(request.body)
     text = ChatMessage.objects.create(
@@ -54,6 +54,6 @@ def send_message(request):
     connections = ConnectionModel.objects.all()
     data = {'messages': [body]}
     for connection in connections:
-        _send_to_connection(connection, data)
+        _send_to_connection(connection.connection_id, data)
         print(connection)
     return JsonResponse({'message': 'message sent successfully'}, status=200)
