@@ -15,21 +15,23 @@ def test(request):
 
 def __parse__body(body):
     body_unicode = body.decode('utf-8')
-    return json.loads(body_unicode)
+    return json.loads(str(body_unicode))
 
 
 @csrf_exempt
 def connect(request):
     body = __parse__body(request.body)
     connection_id = body['connectionId']
-    connection_id.save()
+    connectionid = ConnectionModel.objects.create(connection_id=connection_id)
+    connectionid.save()
     return JsonResponse({'message': 'Connect Successfully'}, status=200)
 
 @csrf_exempt
 def disconnect(request):
     body = __parse__body(request.body)
     connection_id = body['connectionId']
-    connection_id.delete()
+    connectionid = ConnectionModel.objects.get(connection_id=connection_id)
+    connectionid.delete()
     return JsonResponse({'message': 'Disconnect Successfully'}, status=200)
 
 @csrf_exempt
