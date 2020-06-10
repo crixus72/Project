@@ -72,4 +72,4 @@ def recent_messages(request):
                              "message": message.message,
                             "timestamp": message.timestamp,
                              })
-        print({'messages': sorted(recent_texts)})
+    print({'messages': sorted(recent_texts)})
