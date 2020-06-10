@@ -10,4 +10,5 @@ urlpatterns = [
     path('test/', views.test, name='test'),
     path('disconnect/', views.disconnect, name='disconnect'),
     path('send_message/', views.send_message, name='send_message'),
+    path('connect/', views.connect, name='connect'),
 ]

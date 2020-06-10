@@ -13,14 +13,14 @@ def test(request):
     return JsonResponse({'message': 'hello Daud'}, status=200)
 
 
-def __parse__body(body):
+def _parse_body(body):
     body_unicode = body.decode('utf-8')
     return json.loads(str(body_unicode))
 
 
 @csrf_exempt
 def connect(request):
-    body = __parse__body(request.body)
+    body = _parse_body(request.body)
     connection_id = body['connectionId']
     connectionid = ConnectionModel.objects.create(connection_id=connection_id)
     connectionid.save()
@@ -28,7 +28,7 @@ def connect(request):
 
 @csrf_exempt
 def disconnect(request):
-    body = __parse__body(request.body)
+    body = _parse_body(request.body)
     connection_id = body['connectionId']
     connectionid = ConnectionModel.objects.get(connection_id=connection_id)
     connectionid.delete()
@@ -47,7 +47,7 @@ def _send_to_connection(connection_id, data):
 
 @csrf_exempt
 def send_message(request):
-    body = __parse__body(request.body)
+    body = _parse_body(request.body)
     text = ChatMessage.objects.create(
         username=['body']["username"],
         timestamp=['body']["username"],
