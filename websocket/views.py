@@ -64,8 +64,12 @@ def send_message(request):
 
 @csrf_exempt
 def recent_messages(request):
-    connections = ConnectionModel.objects.all()
-    messages = [ChatMessage.objects.all()]
-
-    for connection in connections:
-        print(sorted(messages))
+    body = _parse_body(request.body)
+    messages = ChatMessage.objects.all()
+    recent_texts = []
+    for message in messages:
+        recent_texts.append({"username": message.username,
+                             "message": message.message,
+                            "timestamp": message.timestamp,
+                             })
+        print({'messages': sorted(recent_texts)})
