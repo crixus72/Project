@@ -64,6 +64,7 @@ def send_message(request):
 
 def recent_messages(request):
     connections = ConnectionModel.objects.all()
-    messages = ChatMessage.objects.all()
+    messages = [ChatMessage.objects.all()]
 
     for connection in connections:
+        print(sorted(messages))
