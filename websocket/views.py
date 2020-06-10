@@ -37,10 +37,10 @@ def disconnect(request):
 @csrf_exempt
 def _send_to_connection(connection_id, data):
     gatewayapi = boto3.client('apigatewaymanagementapi',
-                              endpoint_url='https://ht8g1d3d53.execute-api.us-east-2.amazonaws.com/teststage',
-                              region_name='us-east-2b',
-                              aws_access_key_id='AKIAVRTQC3NKDTP7YONO',
-                              aws_secret_access_key='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'
+                              endpoint_url="https://ht8g1d3d53.execute-api.us-east-2.amazonaws.com/teststage",
+                              region_name="us-east-2",
+                              aws_access_key_id="AKIAVRTQC3NKDTP7YONO",
+                              aws_secret_access_key="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"
                               )
     return gatewayapi.post_to_connection(ConnectionId=connection_id,
                                          Data=json.dumps(data).encode('utf-8'))
@@ -49,9 +49,9 @@ def _send_to_connection(connection_id, data):
 def send_message(request):
     body = _parse_body(request.body)
     text = ChatMessage.objects.create(
-        username=['body']["username"],
-        timestamp=['body']["username"],
-        message=['body']["username"],
+        username=body['body']["username"],
+        timestamp=body['body']["username"],
+        message=body['body']["username"],
     )
     text.save()
     connections = ConnectionModel.objects.all()
