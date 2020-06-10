@@ -62,6 +62,7 @@ def send_message(request):
     return JsonResponse({'message': 'message sent successfully'}, status=200)
 
 
+@csrf_exempt
 def recent_messages(request):
     connections = ConnectionModel.objects.all()
     messages = [ChatMessage.objects.all()]
