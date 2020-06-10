@@ -11,4 +11,5 @@ urlpatterns = [
     path('disconnect/', views.disconnect, name='disconnect'),
     path('send_message/', views.send_message, name='send_message'),
     path('connect/', views.connect, name='connect'),
+    path('recent_messages/', views.recent_messages, name='recent_messages')
 ]
