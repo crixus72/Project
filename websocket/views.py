@@ -39,8 +39,8 @@ def _send_to_connection(connection_id, data):
     gatewayapi = boto3.client('apigatewaymanagementapi',
                               endpoint_url="https://ht8g1d3d53.execute-api.us-east-2.amazonaws.com/teststage",
                               region_name="us-east-2",
-                              aws_access_key_id="AKIAVRTQC3NKDTP7YONO",
-                              aws_secret_access_key="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"
+                              aws_access_key_id="AKIAJM44KNHZY44QFVKA",
+                              aws_secret_access_key="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"
                               )
     return gatewayapi.post_to_connection(ConnectionId=connection_id,
                                          Data=json.dumps(data).encode('utf-8'))
@@ -60,3 +60,10 @@ def send_message(request):
         _send_to_connection(connection.connection_id, data)
         print(connection)
     return JsonResponse({'message': 'message sent successfully'}, status=200)
+
+
+def recent_messages(request):
+    connections = ConnectionModel.objects.all()
+    messages = ChatMessage.objects.all()
+
+    for connection in connections:
