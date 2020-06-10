@@ -57,9 +57,7 @@ def send_message(request):
     connections = ConnectionModel.objects.all()
     data = {'message': [body]}
     for connection in connections:
-        _send_to_connection(connection.connection_id, data)
-        print(connection)
-    return JsonResponse({'message': 'message sent successfully'}, status=200)
+        print(_send_to_connection(connection.connection_id, data))
 
 
 def recent_messages(request):
