@@ -66,11 +66,16 @@ def send_message(request):
 def recent_messages(request):
     body = _parse_body(request.body)
     messages = ChatMessage.objects.all()
+    connections = ConnectionModel.objects.all()
     recent_texts = []
     for message in messages:
         recent_texts.append({"username": message.username,
                              "message": message.message,
                             "timestamp": message.timestamp,
                              })
-        sorted_list = sorted(recent_texts)
-        print({'messages': sorted_list})
+    data = {'messages': recent_texts}
+    for connection in connections:
+        _send_to_connection(connection.connection_id, data)
+        print(connection)
+
+
