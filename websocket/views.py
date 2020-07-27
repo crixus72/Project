@@ -51,7 +51,7 @@ def send_message(request):
     text = ChatMessage.objects.create(
         username=body['body']['username'],
         timestamp=body['body']['timestamp'],
-        chat_text=body['body']['content'],
+        message=body['body']['content'],
     )
     text.save()
     connections = ConnectionModel.objects.all()
